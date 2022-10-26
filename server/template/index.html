@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+        <title>groupie-tracker</title>
+        <link href="static/mainpage.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+      <main>
+        <nav class="navbar">
+          <!-- LOGO -->
+          <div class="logo">groupie-tracker<br>by ashley and gin</div>
+          <!-- SEARCH BAR -->
+          <div>
+            <input type="text" id="searchbar" placeholder="Search..">
+            <input type="button" value="Search">
+          </div>
+        </nav>
+      </main>
+      <div class="row">
+      {{range .}}
+      <div class="column">
+        <div class="card">
+          <figure>
+              <h3>Card 1</h3>
+              <img src={{.Image}} alt="queen logo" width="300" height="220">
+              <figcaption>{{.Name}}</figcaption>
+          </figure>
+          <details>
+              <summary>Recent Concerts</summary>
+          </details>
+        </div>
+      </div>
+      {{end}}
+      </div>
+    </body>
+    <footer>
+      <div role="contentinfo">All rights reserved</div>
+    </footer>
+</html>

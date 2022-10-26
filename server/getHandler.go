@@ -2,15 +2,22 @@ package server
 
 import (
 	"fmt"
-	"html/template"
 	"net/http"
 )
 
-//create a variable from server package
-var Tpl *template.Template
-
 func GetRequest(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		errorNotFound(w)
+		return
+	}
+	if Tpl == nil {
+		errorInternalServer(w)
+		return
+	}
+	// res := model.Locations{}
+	// artistsData := getAPI("https://groupietrackers.herokuapp.com/api/locations")
+	// json.Unmarshal([]byte(artistsData), &res)
 	fmt.Println("hello get")
-
-	Tpl.Execute(w, "hello")
+	//json.NewEncoder(w).Encode(peter)
+	Tpl.Execute(w, artists)
 }
