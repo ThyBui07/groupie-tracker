@@ -21,3 +21,8 @@ func GetRequest(w http.ResponseWriter, r *http.Request) {
 	//json.NewEncoder(w).Encode(peter)
 	Tpl.Execute(w, artists)
 }
+
+func GetArtistById(w http.ResponseWriter, r *http.Request) {
+	id := r.URL.Query().Get("id")
+	fmt.Println("id =>", id)
+}

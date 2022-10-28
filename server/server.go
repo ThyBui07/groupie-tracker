@@ -14,18 +14,6 @@ import (
 var Tpl *template.Template
 var artists []model.Band
 
-// func getData() {
-// 	res := handleJSON()
-// 	fmt.Printf("this is res type : %T", res)
-// 	content, err := json.Marshal(res)
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	}
-// 	err = ioutil.WriteFile("artists.json", content, 0644)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-// }
 func Start() error {
 	artists = handleJSON()
 	content, err := json.Marshal(artists)
@@ -45,9 +33,11 @@ func Start() error {
 	// call variable from server package and add value
 	Tpl = tmpl
 	//handle css from static directory
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("/server/static/"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./server/static/"))))
 	//get request
 	http.HandleFunc("/", GetRequest)
+	//
+	http.HandleFunc("/artists", GetArtistById)
 	//post request
 
 	//open port- listen

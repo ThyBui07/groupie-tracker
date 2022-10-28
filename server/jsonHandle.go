@@ -47,10 +47,10 @@ func handleJSON() []model.Band {
 	json.Unmarshal([]byte(relationsData), &relations)
 	//fmt.Println(relations)
 	for i, v := range relations.Relations {
-		for k, v := range v.DatesLocations {
+		for x, y := range v.DatesLocations {
 			var newRelation model.NewRelation
-			newRelation.Location = k
-			newRelation.Dates = v
+			newRelation.Location = x
+			newRelation.Dates = y
 
 			res[i].Relations = append(res[i].Relations, newRelation)
 		}
@@ -64,18 +64,26 @@ func handleJSON() []model.Band {
 		//Methods for imported type​​ Methods can be defined only inside the package where type is created.
 		//Locations: sort, change (-) to ( ), (_)  to (, ), uppercase
 		sort.Strings(v.Locations)
-		for i, _ := range v.Locations {
+		for i := range v.Locations {
 			v.Locations[i] = strings.ReplaceAll(v.Locations[i], "_", " ")
 			v.Locations[i] = strings.ReplaceAll(v.Locations[i], "-", ", ")
 			v.Locations[i] = strings.Title(v.Locations[i])
 		}
 		//fmt.Println("This is change: ", v.Locations[0])
 		//concertDates: remove *, change (-) to (.)
-		for i, _ := range v.ConcertDates {
-			v.ConcertDates[i] = strings.ReplaceAll(v.ConcertDates[i], "*", " ")
+		for i := range v.ConcertDates {
+			v.ConcertDates[i] = strings.ReplaceAll(v.ConcertDates[i], "*", "")
 			v.ConcertDates[i] = strings.ReplaceAll(v.ConcertDates[i], "-", ".")
 		}
-		//
+		//relations- changeg location to (-) (""), date(-) to (.) format,
+		for i := range v.Relations {
+			v.Relations[i].Location = strings.ReplaceAll(v.Relations[i].Location, "_", " ")
+			v.Relations[i].Location = strings.ReplaceAll(v.Relations[i].Location, "-", ", ")
+			v.Relations[i].Location = strings.Title(v.Relations[i].Location)
+			for j := range v.Relations[i].Dates {
+				v.Relations[i].Dates[j] = strings.ReplaceAll(v.Relations[i].Dates[j], "-", ".")
+			}
+		}
 
 	}
 	return res

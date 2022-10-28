@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
         <title>groupie-tracker</title>
-        <link href="static/mainpage.css" type="text/css" rel="stylesheet"/>
+        <link href="static/style.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
       <main>
@@ -24,7 +24,8 @@
       <div class="column">
         <div class="card">
           <figure>
-              <h3>Card 1</h3>
+              <h3 id="titleButton" click="test('hello')">Card 1</h3>
+              <a href="http://localhost:8080/artists?id=1">test 2</a>
               <img src={{.Image}} alt="queen logo" width="300" height="220">
               <figcaption>{{.Name}}</figcaption>
           </figure>
@@ -39,4 +40,6 @@
     <footer>
       <div role="contentinfo">All rights reserved</div>
     </footer>
+    <script src="/static/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="/static/script.js"></script>
 </html>
