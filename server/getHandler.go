@@ -2,7 +2,10 @@ package server
 
 import (
 	"fmt"
+	"html/template"
+	"log"
 	"net/http"
+	"strconv"
 )
 
 func GetRequest(w http.ResponseWriter, r *http.Request) {
@@ -23,6 +26,16 @@ func GetRequest(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetArtistById(w http.ResponseWriter, r *http.Request) {
+	Tpl, err := template.ParseFiles("server/template/band.html")
+	if err != nil {
+		log.Fatal(err)
+	}
 	id := r.URL.Query().Get("id")
+	num, e := strconv.Atoi(id)
+	if e != nil {
+		log.Fatal(e)
+	}
 	fmt.Println("id =>", id)
+	res := artists[(num - 1)]
+	Tpl.Execute(w, res)
 }
