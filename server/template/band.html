@@ -4,12 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/static/artist.css">
+    
 </head>
 <body>
-    <h1>
-        this is page for each band
-    </h1>
-    <h2>{{.}}</h2>
+    <header>
+        <nav class="navbar">
+            <!-- LOGO -->
+            <div class="logo">groupie-tracker<br>by ashley and gin</div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="flex-container">
+            <div class="column" id="r1c1">
+                <img src="{{.Image}}">
+            </div>
+
+            <div class="column" id="r1c2">
+                <h2>NAME: </h2><h3>{{.Name}}</h3><br><br>
+                <h2>FORMED: </h2><h3> {{.CreationDate}} </h3><br><br>
+                <h2>FIRST ALBUM: </h2><h3>{{.FirstAlbum}}</h3><br><br>
+                <h2>LAST CONCERT: </h2>{{range .ConcertDates}}<h3>{{.}}</h3>{{end}}<br><br>
+                <h2>MEMBERS: </h2>
+                
+                {{range .Members}}
+                    <h3>{{.}} </h3>
+                {{end}}<br><br>
+           
+            </div>
+        </div>
+            <div class="c2" id="r2">
+                <h2>CONCERTS</h2>
+                    <div class="info">
+                        <pre>
+                            {{range .LocationDatesRel}}
+                            <h3>{{.}}</h3>
+                            {{end}}
+                        </pre>
+                    </div>
+            </div>
+    </main>
+    
 </body>
 </html>

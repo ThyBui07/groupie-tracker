@@ -8,7 +8,7 @@
         <link href="static/style.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
-      <main>
+      <header>
         <nav class="navbar">
           <!-- LOGO -->
           <div class="logo">groupie-tracker<br>by ashley and gin</div>
@@ -18,24 +18,24 @@
             <input type="button" value="Search">
           </div>
         </nav>
-      </main>
-      <div class="row">
+      </header>
+      <main>
+      <section class="flex-container">
       {{range .}}
-      <div class="column">
         <div class="card">
           <figure>
-              <h3 id="titleButton" click="test('hello')">Card 1</h3>
-              <a href="http://localhost:8080/artists?id={{.Id}}">test 2</a>
-              <img src={{.Image}} alt="queen logo" width="300" height="220">
-              <figcaption>{{.Name}}</figcaption>
+              <a id="img" href="http://localhost:8080/artists?id={{.Id}}">
+              <img src={{.Image}} alt="band logo">
+              </a>
+              <figcaption href="http://localhost:8080/artists?id={{.Id}}">{{.Name}}</figcaption>
           </figure>
           <details>
               <summary>Recent Concerts</summary>
           </details>
         </div>
-      </div>
       {{end}}
-      </div>
+      </section>
+      </main>
     </body>
     <footer>
       <div role="contentinfo">All rights reserved</div>
