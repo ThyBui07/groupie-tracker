@@ -1,8 +1,13 @@
 package server
 
-import "groupie/server/model"
-
-func replace() model.Band {
-	var returnRes model.Band
-	return returnRes
+func removeDuplicateStr(strSlice []string) []string {
+	allKeys := make(map[string]bool)
+	list := []string{}
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
 }

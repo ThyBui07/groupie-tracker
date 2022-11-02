@@ -76,14 +76,21 @@ func handleJSON() []model.Band {
 			v.ConcertDates[i] = strings.ReplaceAll(v.ConcertDates[i], "-", ".")
 		}
 		//relations- changeg location to (-) (""), date(-) to (.) format,
+		var temp []string
 		for i := range v.Relations {
 			v.Relations[i].Location = strings.ReplaceAll(v.Relations[i].Location, "_", " ")
 			v.Relations[i].Location = strings.ReplaceAll(v.Relations[i].Location, "-", ", ")
 			v.Relations[i].Location = strings.Title(v.Relations[i].Location)
 			for j := range v.Relations[i].Dates {
 				v.Relations[i].Dates[j] = strings.ReplaceAll(v.Relations[i].Dates[j], "-", ".")
+				if v.Relations[i].Dates[j] == v.ConcertDates[0] || v.Relations[i].Dates[j] == v.ConcertDates[1] {
+					temp = append(temp, v.Relations[i].Location)
+				}
 			}
+
 		}
+		temp = removeDuplicateStr(temp)
+		res[i].RecentConcerts = temp
 
 	}
 	return res
