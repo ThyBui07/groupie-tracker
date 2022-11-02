@@ -24,7 +24,7 @@
       {{range .}}
         <div class="card">
           <figure>
-              <a id="img" href="http://localhost:8080/artists?id={{.Id}}">
+              <a id="img" href="http://localhost:8080/artists?name={{.Name}}">
               <img src={{.Image}} alt="band logo">
               </a>
               <figcaption href="http://localhost:8080/artists?id={{.Id}}">{{.Name}}</figcaption>

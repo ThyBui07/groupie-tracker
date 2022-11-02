@@ -1,11 +1,12 @@
 package server
 
 import (
+	"errors"
 	"fmt"
+	"groupie/server/model"
 	"html/template"
 	"log"
 	"net/http"
-	"strconv"
 )
 
 func GetRequest(w http.ResponseWriter, r *http.Request) {
@@ -17,11 +18,6 @@ func GetRequest(w http.ResponseWriter, r *http.Request) {
 		errorInternalServer(w)
 		return
 	}
-	// res := model.Locations{}
-	// artistsData := getAPI("https://groupietrackers.herokuapp.com/api/locations")
-	// json.Unmarshal([]byte(artistsData), &res)
-	fmt.Println("hello get")
-	//json.NewEncoder(w).Encode(peter)
 	Tpl.Execute(w, artists)
 }
 
@@ -30,12 +26,24 @@ func GetArtistById(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	id := r.URL.Query().Get("id")
-	num, e := strconv.Atoi(id)
-	if e != nil {
-		log.Fatal(e)
+	query := r.URL.Query()
+	fmt.Println(query)
+	name := r.URL.Query().Get("name")
+	var res model.Band
+	if name == "" {
+		errorBadRequest(w, errors.New("invalid query"))
+		return
+	} else {
+		for i, v := range artists {
+			if v.Name == name {
+				res = artists[i]
+				break
+			}
+		}
 	}
-	fmt.Println("id =>", id)
-	res := artists[(num - 1)]
+	if res.Id == 0 {
+		errorNotFound(w)
+		return
+	}
 	Tpl.Execute(w, res)
 }
