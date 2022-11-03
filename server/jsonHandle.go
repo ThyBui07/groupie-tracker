@@ -45,7 +45,6 @@ func handleJSON() []model.Band {
 	var relations model.Relations
 	relationsData := getAPI("https://groupietrackers.herokuapp.com/api/relation")
 	json.Unmarshal([]byte(relationsData), &relations)
-	//fmt.Println(relations)
 	for i, v := range relations.Relations {
 		for x, y := range v.DatesLocations {
 			var newRelation model.NewRelation
@@ -83,13 +82,13 @@ func handleJSON() []model.Band {
 			v.Relations[i].Location = strings.Title(v.Relations[i].Location)
 			for j := range v.Relations[i].Dates {
 				v.Relations[i].Dates[j] = strings.ReplaceAll(v.Relations[i].Dates[j], "-", ".")
-				if v.Relations[i].Dates[j] == v.ConcertDates[0] || v.Relations[i].Dates[j] == v.ConcertDates[1] {
+				if v.Relations[i].Dates[j] == v.ConcertDates[0] {
 					temp = append(temp, v.Relations[i].Location)
 				}
 			}
 
 		}
-		temp = removeDuplicateStr(temp)
+
 		res[i].RecentConcerts = temp
 
 	}

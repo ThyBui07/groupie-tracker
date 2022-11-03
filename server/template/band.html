@@ -18,32 +18,17 @@
 
     <main>
         <div class="flex-container">
-            <div class="column" id="r1c1">
-                <img src="{{.Image}}">
+            <div class="column" id="left">
+                <img class="content" src="{{.Image}}">
+                <h2 class="content">Name: </h2><h3>{{.Name}}</h3><br><br>
+                <h2 class="content">Members: </h2>{{range .Members}}<h3>{{.}} </h3>{{end}}<br><br>
+                <h2 class="content">Creation Date: </h2><h3> {{.CreationDate}} </h3><br><br>
             </div>
 
-            <div class="column" id="r1c2">
-                <h2>NAME: </h2><h3>{{.Name}}</h3><br><br>
-                <h2>FORMED: </h2><h3> {{.CreationDate}} </h3><br><br>
-                <h2>FIRST ALBUM: </h2><h3>{{.FirstAlbum}}</h3><br><br>
-                <h2>LAST CONCERT: </h2>{{range .ConcertDates}}<h3>{{.}}</h3>{{end}}<br><br>
-                <h2>MEMBERS: </h2>
-                
-                {{range .Members}}
-                    <h3>{{.}} </h3>
-                {{end}}<br><br>
-           
-            </div>
-        </div>
-            <div class="c2" id="r2">
-                <h2>CONCERTS</h2>
-                    <div class="info">
-                        <pre>
-                            {{range .LocationDatesRel}}
-                            <h3>{{.}}</h3>
-                            {{end}}
-                        </pre>
-                    </div>
+            <div class="column" id="right">
+                <h2 class="content">First Album: </h2><h3>{{.FirstAlbum}}</h3><br><br>
+                <h2 class="content">Locations: </h2>{{range .Locations}}<h3>{{.}}</h3>{{end}}<br><br>
+                <h2 class="content">Last Concerts: </h2>{{range .ConcertDates}}<h3>{{.}}</h3>{{end}}<br><br>
             </div>
     </main>
     

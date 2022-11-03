@@ -27,10 +27,13 @@
               <a id="img" href="http://localhost:8080/artists?name={{.Name}}">
               <img src={{.Image}} alt="band logo">
               </a>
-              <figcaption href="http://localhost:8080/artists?id={{.Id}}">{{.Name}}</figcaption>
+              <figcaption>{{.Name}}</figcaption>
           </figure>
           <details>
-              <summary>Recent Concerts</summary>
+              <summary>Last Concert Location</summary>
+              {{range .RecentConcerts}}
+              <div>{{.}}</div>
+              {{end}}
           </details>
         </div>
       {{end}}
@@ -38,8 +41,6 @@
       </main>
     </body>
     <footer>
-      <div role="contentinfo">All rights reserved</div>
+      <div role="contentinfo">All rights reserved © 2022</div>
     </footer>
-    <script src="/static/jquery-3.6.1.min.js"></script>
-    <script type="text/javascript" src="/static/script.js"></script>
 </html>

@@ -33,7 +33,6 @@ func Start() error {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./server/static/"))))
 	//get request
 	http.HandleFunc("/", GetRequest)
-	//
 	http.HandleFunc("/artists", GetArtistById)
 	//post request
 

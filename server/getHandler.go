@@ -2,7 +2,6 @@ package server
 
 import (
 	"errors"
-	"fmt"
 	"groupie/server/model"
 	"html/template"
 	"log"
@@ -26,8 +25,7 @@ func GetArtistById(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	query := r.URL.Query()
-	fmt.Println(query)
+
 	name := r.URL.Query().Get("name")
 	var res model.Band
 	if name == "" {
