@@ -68,7 +68,6 @@ func handleJSON() []model.Band {
 			v.Locations[i] = strings.ReplaceAll(v.Locations[i], "-", ", ")
 			v.Locations[i] = strings.Title(v.Locations[i])
 		}
-		//fmt.Println("This is change: ", v.Locations[0])
 		//concertDates: remove *, change (-) to (.)
 		for i := range v.ConcertDates {
 			v.ConcertDates[i] = strings.ReplaceAll(v.ConcertDates[i], "*", "")

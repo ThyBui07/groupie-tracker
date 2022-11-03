@@ -4,7 +4,6 @@ import (
 	"errors"
 	"groupie/server/model"
 	"html/template"
-	"log"
 	"net/http"
 )
 
@@ -23,7 +22,9 @@ func GetRequest(w http.ResponseWriter, r *http.Request) {
 func GetArtistById(w http.ResponseWriter, r *http.Request) {
 	Tpl, err := template.ParseFiles("server/template/band.html")
 	if err != nil {
-		log.Fatal(err)
+		errorInternalServer(w)
+		return
+
 	}
 
 	name := r.URL.Query().Get("name")
