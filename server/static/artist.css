@@ -24,6 +24,19 @@ body {
     font-size: 20px;
 }
 
+/* BUTTON */
+.button {
+    top:30px;
+    position:absolute;
+    min-height:30px; 
+    min-width: 120px;
+    font-weight: bold;
+    color:#555B53;
+    border: 1px solid #555B53;
+    border-radius: 8px;
+}
+
+
 /* FLEX-CONTAINER */
 .flex-container {
     display: -ms-flexbox;
@@ -60,6 +73,10 @@ body {
 h3 {
     font-weight: lighter;
     row-gap: 5px;
+    font-style: italic;
 }
 
-
+.location {
+    font-size: 25px;
+    font-weight: lighter;
+}
