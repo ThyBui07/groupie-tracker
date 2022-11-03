@@ -20,15 +20,15 @@
 
     <main>
         <div class="flex-container">
-            <div class="column" id="left">
+            <div class="column">
                 <img class="content" src="{{.Image}}">
-                <h2 class="content">Name: </h2><hs3>{{.Name}}</h3><br><br>
+                <h2 class="content">Name: </h2><h3>{{.Name}}</h3><br><br>
                 <h2 class="content">Members: </h2>{{range .Members}}<h3>{{.}} </h3>{{end}}<br><br>
                 <h2 class="content">Creation Date: </h2><h3> {{.CreationDate}} </h3><br><br>
                 <h2 class="content">First Album: </h2><h3>{{.FirstAlbum}}</h3><br><br>
             </div>
 
-            <div class="column" id="right">
+            <div class="column">
                 <h2 class="content">Locations: </h2>{{range .Locations}}<h3>{{.}}</h3>{{end}}<br><br>
                 <h2 class="content">Last Concerts: </h2>{{range .ConcertDates}}<h3>{{.}}</h3>{{end}}<br><br>
                 <h2 class="content">Relations: </h2>
