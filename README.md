@@ -1,4 +1,17 @@
-# groupie-tracker
+# Project
+
+Groupie-tracker
+
+# Authors
+
+Thy Bui (Gin)
+Huong Le (Ashley)
+
+# Technologies
+
+Project is built with Golang version 1.18
+
+# Description
 
 Groupie Trackers consists on receiving a given API and manipulate the data contained in it, in order to create a site, displaying the information.
 
@@ -11,3 +24,13 @@ The second one, locations, consists in their last and/or upcoming concert locati
 The third one, dates, consists in their last and/or upcoming concert dates.
 
 And the last one, relation, does the link between all the other parts, artists, dates and locations.
+
+# Usage
+1. Clone the repo in VSCode or your text editor of choice.
+2. Enter in your terminal: 
+```
+$ go run .
+````
+3. Open Chrome or your browser of choice, enter:
+http://localhost:8080/
+4. The webpage is ready!
