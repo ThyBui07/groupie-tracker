@@ -4,8 +4,8 @@ Groupie-tracker
 
 # Authors
 
-Thy Bui (Gin)
-Huong Le (Ashley)
+* Thy Bui (Gin)
+* Huong Le (Ashley)
 
 # Technologies
 
