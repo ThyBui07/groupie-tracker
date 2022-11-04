@@ -12,6 +12,7 @@ body {
 /* NAVBAR STYLING STARTS */
 .navbar {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
     padding: 20px;
@@ -27,15 +28,19 @@ body {
 /* BUTTON */
 .button {
     top:30px;
-    position:absolute;
     min-height:30px; 
-    min-width: 120px;
+    min-width: 60px;
+    font-size: 18px;
     font-weight: bold;
     color:#555B53;
     border: 1px solid #555B53;
     border-radius: 8px;
 }
 
+.button:hover {
+    background-color:  gray;
+    color: white;
+}
 
 /* FLEX-CONTAINER */
 .flex-container {
