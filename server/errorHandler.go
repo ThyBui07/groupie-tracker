@@ -14,7 +14,7 @@ type errorData struct {
 func errHandlers(w http.ResponseWriter, r *http.Request, err int) {
 	temp, er := template.ParseFiles("server/template/error.html")
 	if er != nil {
-		log.Fatal(err)
+		log.Fatal(er)
 		return
 	}
 	w.WriteHeader(err)
