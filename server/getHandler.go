@@ -1,7 +1,6 @@
 package server
 
 import (
-	"errors"
 	"groupie/server/model"
 	"html/template"
 	"net/http"
@@ -9,11 +8,11 @@ import (
 
 func GetRequest(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		errorNotFound(w)
+		errHandlers(w, r, http.StatusNotFound)
 		return
 	}
 	if Tpl == nil {
-		errorInternalServer(w)
+		errHandlers(w, r, http.StatusInternalServerError)
 		return
 	}
 	Tpl.Execute(w, artists)
@@ -22,7 +21,7 @@ func GetRequest(w http.ResponseWriter, r *http.Request) {
 func GetArtistById(w http.ResponseWriter, r *http.Request) {
 	Tpl, err := template.ParseFiles("server/template/band.html")
 	if err != nil {
-		errorInternalServer(w)
+		errHandlers(w, r, http.StatusInternalServerError)
 		return
 
 	}
@@ -30,7 +29,7 @@ func GetArtistById(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
 	var res model.Band
 	if name == "" {
-		errorBadRequest(w, errors.New("invalid query"))
+		errHandlers(w, r, http.StatusBadRequest)
 		return
 	} else {
 		for i, v := range artists {
@@ -41,7 +40,7 @@ func GetArtistById(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if res.Id == 0 {
-		errorNotFound(w)
+		errHandlers(w, r, http.StatusNotFound)
 		return
 	}
 	Tpl.Execute(w, res)
